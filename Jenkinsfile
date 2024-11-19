@@ -38,4 +38,15 @@ pipeline{
             }
         }
     }
+     post {
+        success {
+            slackSend(channel: '#all-the-cloud-hub', color: 'good', message: "Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]' (${env.BUILD_URL}) was successful.")
+        }
+        failure {
+            slackSend(channel: '#all-the-cloud-hub', color: 'danger', message: "Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]' (${env.BUILD_URL}) failed.")
+        }
+        always {
+            echo 'Build finished, check Slack for notifications.'
+        }
+    }
 }

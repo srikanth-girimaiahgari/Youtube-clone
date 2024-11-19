@@ -10,6 +10,11 @@ pipeline{
                 cleanWs()
             }
         }
+        stage('Checkout from Git'){
+            steps{
+                git branch: 'main', url: 'https://github.com/srikanth-girimaiahgari/Youtube-clone.git'
+            }
+        }
         stage('Install Dependencies') {
             steps {
                 sh "npm install"

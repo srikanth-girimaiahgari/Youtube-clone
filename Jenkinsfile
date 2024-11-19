@@ -34,7 +34,7 @@ pipeline{
         }
         stage('Deploy to container'){
             steps{
-                sh 'docker run -d --name youtube-clone -p 3000:3000 sr79979/youtube-clone:${env.BUILD_NUMBER}'
+                sh "docker run -d --name youtube-clone -p 3000:3000 sr79979/youtube-clone:${env.BUILD_NUMBER} "       
             }
         }
     }

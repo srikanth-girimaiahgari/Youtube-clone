@@ -24,6 +24,7 @@ pipeline{
             steps{
                 script{
                    withDockerRegistry(credentialsId: 'docker', toolName: 'docker'){   
+                       sh "./docker_check.sh"
                        sh "docker build -t youtube-clone ."
                        sh "docker tag youtube-clone sr79979/youtube-clone:${env.BUILD_NUMBER} "
                        sh "docker push sr79979/youtube-clone:${env.BUILD_NUMBER} "
@@ -34,6 +35,7 @@ pipeline{
         }
         stage('Deploy to container'){
             steps{
+                sh ""
                 sh "docker run -d --name youtube-clone -p 3000:3000 sr79979/youtube-clone:${env.BUILD_NUMBER} "       
             }
         }

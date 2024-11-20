@@ -28,8 +28,8 @@ pipeline{
                        sh 'chmod +x docker_check.sh'
                        sh './docker_check.sh'
                        sh "docker build -t youtube-clone ."
-                       sh "docker tag youtube-clone sr79979/youtube-clone:${env.BUILD_NUMBER} "
-                       sh "docker push sr79979/youtube-clone:${env.BUILD_NUMBER} "
+                       sh "docker tag youtube-clone sr79979/youtube-clone:latest "
+                       sh "docker push sr79979/youtube-clone:latest "
                        sh "docker "
                     }
                 }
